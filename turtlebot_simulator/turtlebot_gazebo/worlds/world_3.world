@@ -1,0 +1,513 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <world name="default">
+    <!-- A global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <!-- A ground plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    <!-- Own physics settings to speed up simulation -->
+    <physics type='ode'>
+      <max_step_size>0.01</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>100</real_time_update_rate>
+      <gravity>0 0 -9.8</gravity>
+    </physics>
+    <model name="obstacle1">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision1">
+          <geometry>
+            <polyline>
+              <point>-9 6</point>
+              <point>-3 6</point>
+              <point>-2 5</point>
+              <point>-9 5</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+        </collision>
+        <visual name="visual1">
+          <geometry>
+            <polyline>
+              <point>-9 6</point>
+              <point>-3 6</point>
+              <point>-2 5</point>
+              <point>-9 5</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Wood</name>
+            </script>
+          </material>
+        </visual>  
+      </link>
+    </model>
+<model name="obstacle2">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision2">
+          <geometry>
+            <polyline>
+              <point>-3 6</point>
+              <point>-3 8</point>
+              <point>-2 8</point>
+	      <point>-2 5</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+        </collision>
+        <visual name="visual2">
+          <geometry>
+            <polyline>
+              <point>-3 6</point>
+              <point>-3 8</point>
+              <point>-2 8</point>
+              <point>-2 5</point>
+	      <height>1</height>
+            </polyline>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Wood</name>
+            </script>
+          </material>
+        </visual>  
+      </link>
+    </model>
+<model name="obstacle3">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision3">
+          <geometry>
+            <polyline>
+              <point>-3 5</point>
+              <point>-4 5</point>
+              <point>-4 1</point>
+              <point>-3 1</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+        </collision>
+        <visual name="visual3">
+          <geometry>
+            <polyline>
+              <point>-3 5</point>
+              <point>-4 5</point>
+              <point>-4 1</point>
+              <point>-3 1</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Wood</name>
+            </script>
+          </material>
+        </visual>  
+      </link>
+    </model>
+<model name="obstacle4">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision4">
+          <geometry>
+            <polyline>
+              <point>10 9</point>
+              <point>2 8</point>
+              <point>3 7</point>
+              <point>10 8</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+        </collision>
+        <visual name="visual4">
+          <geometry>
+            <polyline>
+              <point>10 9</point>
+              <point>2 8</point>
+              <point>3 7</point>
+              <point>10 8</point>
+	      <height>1</height>
+            </polyline>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Wood</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+<model name="obstacle5">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision5">
+          <geometry>
+            <polyline>
+              <point>7 6</point>
+              <point>0 5</point>
+              <point>1 4</point>
+              <point>8 5</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+        </collision>
+        <visual name="visual5">
+          <geometry>
+            <polyline>
+              <point>7 6</point>
+              <point>0 5</point>
+              <point>1 4</point>
+              <point>8 5</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Wood</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+<model name="obstacle6">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision6">
+          <geometry>
+            <polyline>
+              <point>10 3</point>
+              <point>2 2</point>
+              <point>3 1</point>
+              <point>10 2</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+        </collision>
+        <visual name="visual6">
+          <geometry>
+            <polyline>
+              <point>10 3</point>
+              <point>2 2</point>
+              <point>3 1</point>
+              <point>10 2</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Wood</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+<model name="obstacle7">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision7">
+          <geometry>
+            <polyline>
+              <point>9 -8</point>
+              <point>9 -2</point>
+              <point>8 -2</point>
+              <point>8 -8</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+        </collision>
+        <visual name="visual7">
+          <geometry>
+            <polyline>
+              <point>9 -8</point>
+              <point>9 -2</point>
+              <point>8 -2</point>
+              <point>8 -8</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Wood</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+<model name="obstacle8">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision8">
+          <geometry>
+            <polyline>
+              <point>8 -2</point>
+              <point>-1 -4</point>
+              <point>-1 -5</point>
+              <point>8 -3</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+        </collision>
+        <visual name="visual8">
+          <geometry>
+            <polyline>
+	      <point>8 -2</point>
+              <point>-1 -4</point>
+              <point>-1 -5</point>
+              <point>8 -3</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Wood</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+<model name="obstacle9">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision9">
+          <geometry>
+            <polyline>
+              <point>-1 -4</point>
+              <point>-7 2</point>
+              <point>-7 1</point>
+              <point>-2 -5</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+        </collision>
+        <visual name="visual9">
+          <geometry>
+            <polyline>
+	      <point>-1 -4</point>
+              <point>-7 2</point>
+              <point>-7 1</point>
+              <point>-2 -5</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Wood</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+<model name="obstacle10">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision10">
+          <geometry>
+            <polyline>
+              <point>-3 -4</point>
+              <point>-7 -6</point>
+              <point>-7 -7</point>
+              <point>-3 -5</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+        </collision>
+        <visual name="visual10">
+          <geometry>
+            <polyline>
+              <point>-3 -4</point>
+              <point>-7 -6</point>
+              <point>-7 -7</point>
+              <point>-3 -5</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Wood</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+<model name="obstacle11">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision11">
+          <geometry>
+            <polyline>
+              <point>0 3</point>
+              <point>3 -2</point>
+              <point>-2 0</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+        </collision>
+        <visual name="visual11">
+          <geometry>
+            <polyline>
+              <point>0 3</point>
+              <point>3 -2</point>
+              <point>-2 0</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Wood</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+<model name="wall1">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision_wall1">
+          <geometry>
+            <polyline>
+              <point>10 10</point>
+              <point>10 -9</point>
+              <point>11 -10</point>
+              <point>11 11</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+        </collision>
+        <visual name="visual_wall1">
+          <geometry>
+            <polyline>
+              <point>10 10</point>
+              <point>10 -9</point>
+              <point>11 -10</point>
+              <point>11 11</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Wood</name>
+            </script>
+          </material>
+        </visual>  
+      </link>
+    </model>
+<model name="wall2">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision_wall2">
+          <geometry>
+            <polyline>
+              <point>10 10</point>
+              <point>-9 10</point>
+              <point>-10 11</point>
+              <point>11 11</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+        </collision>
+        <visual name="visual_wall2">
+          <geometry>
+            <polyline>
+              <point>10 10</point>
+              <point>-9 10</point>
+              <point>-10 11</point>
+              <point>11 11</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Wood</name>
+            </script>
+          </material>
+        </visual>  
+      </link>
+    </model>
+<model name="wall3">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision_wall3">
+          <geometry>
+            <polyline>
+              <point>-9 10</point>
+              <point>-9 -9</point>
+              <point>-10 -10</point>
+              <point>-10 11</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+        </collision>
+        <visual name="visual_wall3">
+          <geometry>
+            <polyline>
+              <point>-9 10</point>
+              <point>-9 -9</point>
+              <point>-10 -10</point>
+              <point>-10 11</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Wood</name>
+            </script>
+          </material>
+        </visual>  
+      </link>
+    </model>
+<model name="wall4">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision_wall4">
+          <geometry>
+            <polyline>
+              <point>10 -9</point>
+              <point>-9 -9</point>
+              <point>-10 -10</point>
+              <point>11 -10</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+        </collision>
+        <visual name="visual_wall4">
+          <geometry>
+            <polyline>
+              <point>10 -9</point>
+              <point>-9 -9</point>
+              <point>-10 -10</point>
+              <point>11 -10</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Wood</name>
+            </script>
+          </material>
+        </visual>  
+      </link>
+    </model>
+  </world>
+</sdf>

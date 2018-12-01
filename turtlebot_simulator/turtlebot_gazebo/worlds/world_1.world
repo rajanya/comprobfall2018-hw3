@@ -1,0 +1,251 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <world name="default">
+    <!-- A global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <!-- A ground plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    <!-- Own physics settings to speed up simulation -->
+    <physics type='ode'>
+      <max_step_size>0.01</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>100</real_time_update_rate>
+      <gravity>0 0 -9.8</gravity>
+    </physics>
+    <model name="triangle1">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision1">
+          <geometry>
+            <polyline>
+              <point>-1 -1</point>
+              <point>-5 -1</point>
+              <point>-5 2</point>
+              <point>-3 2</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+        </collision>
+        <visual name="triangle1">
+          <geometry>
+            <polyline>
+               <point>-1 -1</point>
+              <point>-5 -1</point>
+              <point>-5 2</point>
+              <point>-3 2</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Black</name>
+            </script>
+          </material>
+        </visual>  
+      </link>
+    </model>
+<model name="triangle2">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision2">
+          <geometry>
+            <polyline>
+              <point>-2 2</point>
+              <point>2 2</point>
+              <point>2 -4</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+        </collision>
+        <visual name="triangle2">
+          <geometry>
+            <polyline>
+              <point>-2 2</point>
+              <point>2 2</point>
+              <point>2 -4</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Black</name>
+            </script>
+          </material>
+        </visual>  
+      </link>
+    </model>
+<model name="triangle3">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision3">
+          <geometry>
+            <polyline>
+              <point>-1 -2.5</point>
+              <point>-5 -2.5</point>
+              <point>-5 -5</point>
+              <point>1.2 -5</point>
+              <point>1.2 -4</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+        </collision>
+        <visual name="triangle3">
+          <geometry>
+            <polyline>
+              <point>-1 -2.5</point>
+              <point>-5 -2.5</point>
+              <point>-5 -5</point>
+              <point>1.2 -5</point>
+              <point>1.2 -4</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Black</name>
+            </script>
+          </material>
+        </visual>  
+      </link>
+    </model>
+<model name="triangle4">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision4">
+          <geometry>
+            <polyline>
+              <point>4 4</point>
+              <point>4 -7</point>
+              <point>5 -8</point>
+              <point>5 5</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+        </collision>
+        <visual name="triangle4">
+          <geometry>
+            <polyline>
+              <point>4 4</point>
+              <point>4 -7</point>
+              <point>5 -8</point>
+              <point>5 5</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Black</name>
+            </script>
+          </material>
+        </visual>  
+      </link>
+    </model>
+<model name="triangle5">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision5">
+          <geometry>
+            <polyline>
+              <point>4 4</point>
+              <point>-7 4</point>
+              <point>-8 5</point>
+              <point>5 5</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+        </collision>
+        <visual name="triangle5">
+          <geometry>
+            <polyline>
+              <point>4 4</point>
+              <point>-7 4</point>
+              <point>-8 5</point>
+              <point>5 5</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Black</name>
+            </script>
+          </material>
+        </visual>  
+      </link>
+    </model>
+<model name="triangle6">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision6">
+          <geometry>
+            <polyline>
+              <point>-7 4</point>
+              <point>-7 -7</point>
+              <point>-8 -8</point>
+              <point>-8 5</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+        </collision>
+        <visual name="triangle6">
+          <geometry>
+            <polyline>
+              <point>-7 4</point>
+              <point>-7 -7</point>
+              <point>-8 -8</point>
+              <point>-8 5</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Black</name>
+            </script>
+          </material>
+        </visual>  
+      </link>
+    </model>
+<model name="triangle7">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision7">
+          <geometry>
+            <polyline>
+              <point>4 -7</point>
+              <point>-7 -7</point>
+              <point>-8 -8</point>
+              <point>5 -8</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+        </collision>
+        <visual name="triangle7">
+          <geometry>
+            <polyline>
+               <point>4 -7</point>
+              <point>-7 -7</point>
+              <point>-8 -8</point>
+              <point>5 -8</point>
+              <height>1</height>
+            </polyline>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Black</name>
+            </script>
+          </material>
+        </visual>  
+      </link>
+    </model>
+  </world>
+</sdf>
