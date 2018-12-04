@@ -3,12 +3,13 @@ import rospy
 import tf
 import numpy as np
 from geometry_msgs.msg import Twist
-from std_msgs.msg import Bool
+from std_msgs.msg import Bool, Float32
 from gazebo_msgs.srv import SetModelState, GetModelState
 from gazebo_msgs.msg import ModelState
 from kobuki_msgs.msg import BumperEvent
 from turtlebot_ctrl.srv import TurtleBotControl, TurtleBotControlResponse
 from turtlebot_ctrl.msg import TurtleBotScan
+from copy import deepcopy
 
 class TurtlebotControlServer:
 	def __init__(self):
@@ -26,8 +27,8 @@ class TurtlebotControlServer:
 
 		self.bumper_sub =  rospy.Subscriber("/mobile_base/events/bumper",BumperEvent,self.processBump)
 
-		self.angular_noise = rospy.get_param("/angular_noise")
-		self.linear_noise = rospy.get_param("/linear_noise")
+		self.rotation_noise = rospy.get_param("/rotation_noise")
+		self.translation_noise = rospy.get_param("/translation_noise")
 
 		self.step_size = 10
 
@@ -41,14 +42,14 @@ class TurtlebotControlServer:
 		current_model_state = self.get_model_state(model_name="mobile_base")
 		return current_model_state.pose
 
-	def set_steering_angle(self,steering_angle):
+	def set_heading_angle(self,heading_angle):
 		model_state_resp = self.get_model_state(model_name="mobile_base")
 		model_state = SetModelState()
 		model_state.model_name = "mobile_base"
 		model_state.pose = model_state_resp.pose
 		model_state.twist = Twist()
 		model_state.reference_frame = "world"
-		quat = tf.transformations.quaternion_from_euler(0,0,steering_angle)
+		quat = tf.transformations.quaternion_from_euler(0,0,heading_angle)
 		model_state.pose.orientation.x = quat[0]
 		model_state.pose.orientation.y = quat[1]
 		model_state.pose.orientation.z = quat[2]
@@ -82,15 +83,17 @@ class TurtlebotControlServer:
 		if collision: return turtlebot to original pose, return
 		"""
 		current_pose = self.get_current_pose()
-		target_pose = np.array([current_pose.position.x + np.clip(req.point.x,-1.0,1.0),
-								current_pose.position.y + np.clip(req.point.y,-1.0,1.0)])
 
-		steering_angle = np.arctan2((target_pose[1] - current_pose.position.y),(target_pose[0] - current_pose.position.x)) + np.random.normal(0,self.angular_noise)
-		self.set_steering_angle(steering_angle)
+		desired_angle = np.clip(req.heading.data,-np.pi,np.pi)
+		desired_distance = np.clip(req.distance.data,0,1.0)
 
-		target_pose += np.random.normal(0,self.linear_noise,2)
+		self.set_heading_angle(desired_angle)
 
 		current_position = self.get_current_position(current_pose)
+
+		target_pose = np.zeros((2,))
+		target_pose[0] = current_position[0] + desired_distance*np.cos(desired_angle)
+		target_pose[1] = current_position[1] + desired_distance*np.sin(desired_angle)
 
 		waypoints_x = np.linspace(current_position[0],target_pose[0],self.step_size)
 		waypoints_y = np.linspace(current_position[1],target_pose[1],self.step_size)
@@ -104,12 +107,17 @@ class TurtlebotControlServer:
 
 		model_state = self.get_model_state(model_name="mobile_base")
 		ground_truth = ModelState()
-		if req.return_ground_truth.data:
-			ground_truth.pose = model_state.pose
-			ground_truth.twist = model_state.twist
+		ground_truth.pose = model_state.pose
+		ground_truth.twist = model_state.twist
 		ground_truth.model_name = "mobile_base"
 
-		return TurtleBotControlResponse(ground_truth=ground_truth,scan_data=scan_data)
+		noisy_heading = Float32()
+		noisy_heading.data = desired_angle + np.random.normal(0,self.rotation_noise)
+		noisy_distance = Float32()
+		noisy_distance.data = desired_distance + np.random.normal(0,self.translation_noise)
+
+		return TurtleBotControlResponse(ground_truth=ground_truth,noisy_heading=noisy_heading,
+			noisy_distance=noisy_distance,scan_data=scan_data)
 
 	def run(self):
 		rospy.spin()

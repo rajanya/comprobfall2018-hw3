@@ -22,8 +22,8 @@ You might have to do rosdep update and rosdep install.
 ```
 $ roscore &
 $ rosparam set scan_noise <std.deviation of scan noise>
-$ rosparam set angular_noise <std.deviation of angular noise>
-$ rosparam set linear_noise <std.deviation of linear noise>
+$ rosparam set rotation_noise <std.deviation of angular noise>
+$ rosparam set translation_noise <std.deviation of linear noise>
 $ export ROBOT_INITIAL_POSE="-x <x of start position> -y <y of start position>" 
 $ roslaunch turtlebot_gazebo turtlebot_world.launch world_file:=<absolute path to world_x.world>
 ```
