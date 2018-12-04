@@ -14,7 +14,7 @@ $ catkin_make
 $ source devel/setup.bash
 ```
 
-You might have to do rosdep update and rosdep install.
+You might have to do ```rosdep update``` and ```rosdep install```.
 
 ## Running the software:
 
@@ -60,6 +60,28 @@ description defined by turtlebot_ctrl/TurtleBotControl.srv.
 
 The srv file is divided into two parts, separated by a − − −. The top part of
 the srv file is the request, while the bottom part of the srv file is the response.
+
+## Generating trajectories:
+
+1. Execute all the steps mentioned in the section "Running the software".
+
+2. In a separate terminal, run the client:
+
+```
+   $ rosrun turtlebot_ctrl generate_data.py
+```
+
+3.  Enter the following keys to move the turtlebot.
+   
+```
+   x: to move down
+   w: to move up
+   a: to move left
+   d: to move right
+   s: to stop
+```
+
+4. Two files named ```controls.txt``` and ```trajectories.txt``` will be generated in the current folder.
 
 ## Part B World:
 ![alt text](https://github.com/rajanya/comprobfall2018-hw3/blob/master/screenshots/partB_world.png)
