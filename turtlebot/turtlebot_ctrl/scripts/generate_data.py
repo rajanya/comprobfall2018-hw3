@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 from turtlebot_ctrl.srv import TurtleBotControl
-from geometry_msgs.msg import Point
-from std_msgs.msg import Bool
+from std_msgs.msg import Bool, Float32
 import rospy
+import numpy as np
 
 class TurtlebotControlClient:
 	def __init__(self):
@@ -12,47 +12,47 @@ class TurtlebotControlClient:
 		self.turtlebot_control_service = rospy.ServiceProxy("turtlebot_control",TurtleBotControl)
 
 	def run(self):
-		f_c = open("controls.txt", "w+")
 		f_r = open("trajectories.txt", "w+")
 		key = ""
+		heading = Float32()
+                heading.data = 0.0
+                distance = Float32()
+
 		while key != 's':
-			key = raw_input("WASD:")
-			req = Point()
+			key = raw_input("PRESS CONTROL KEYS:\n(The rotation keys rotate the turtlebot with respect to x-axis)\nl : +45 degree\na : -45 degree\nt : +90 degree\nv : -90 degree\nj : 0 degree\nf : -180 degree\nh : +135 degree\ng: -135 degree\n\nd : to move 1 cm\nm : to move sqrt(2) cm (diagonally)\n\ns : to stop\n")
+			distance.data = 0.0
 			return_ground_truth = Bool()
 			return_ground_truth.data = True
 
-			if key == 'q':
-				req.x = -1
-				req.y = 1
-			elif key == 'w':
-				req.y = 1
-			elif key == 'e':
-				req.x = 1
-				req.y = 1
+			if key == 'l':
+				heading.data = np.pi/4
 			elif key == 'a':
-				req.x = -1
+				heading.data = -np.pi/4
+			elif key == 't':
+				heading.data = np.pi/2
+			elif key == 'v':
+				heading.data = -np.pi/2
+			elif key == 'j':
+                                heading.data = 0
+                        elif key == 'f':
+                                heading.data = -np.pi
+                        elif key == 'h':
+                                heading.data = 3*np.pi/4
+			elif key == 'g':
+                                heading.data = -3*np.pi/4
 			elif key == 'd':
-				req.x = 1
-			elif key == 'z':
-				req.x = -1
-				req.y = -1
-			elif key == 'x':
-				req.y = -1
-			elif key == 'c':
-				req.x = 1
-				req.y = -1
+				distance.data = 1.0
+			elif key == 'm':
+				distance.data = 1.414
 
-			print(req)
-			f_c.write(str(req))
-			f_c.write("\n\n")
-			f_r.write(str(req))
-			f_r.write("\n")
-			output = self.turtlebot_control_service(req,return_ground_truth)
+			print("Heading: "+str(heading))
+			print("Distance: "+str(distance))
+			f_r.write("Heading: "+str(heading)+"\n")
+			f_r.write("Distance: "+str(distance)+"\n")
+			output = self.turtlebot_control_service(heading, distance, return_ground_truth)
 			print(output)
-			f_r.write(str(output))
-			f_r.write("\n")
+			f_r.write(str(output)+"\n")
 			
-		f_c.close()
 		f_r.close()
 		rospy.spin()
 

@@ -71,17 +71,9 @@ the srv file is the request, while the bottom part of the srv file is the respon
    $ rosrun turtlebot_ctrl generate_data.py
 ```
 
-3.  Enter the following keys to move the turtlebot.
+3. Follow the instructions on the terminal to rotate/displace the turtlebot.
    
-```
-   x: to move down
-   w: to move up
-   a: to move left
-   d: to move right
-   s: to stop
-```
-
-4. Two files named ```controls.txt``` and ```trajectories.txt``` will be generated in the current folder.
+4. A file called ```trajectories.txt``` will be generated in the current folder.
 
 ## Part B World:
 ![alt text](https://github.com/rajanya/comprobfall2018-hw3/blob/master/screenshots/partB_world.png)

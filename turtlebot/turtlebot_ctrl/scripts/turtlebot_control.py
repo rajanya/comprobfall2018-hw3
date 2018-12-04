@@ -85,7 +85,7 @@ class TurtlebotControlServer:
 		current_pose = self.get_current_pose()
 
 		desired_angle = np.clip(req.heading.data,-np.pi,np.pi)
-		desired_distance = np.clip(req.distance.data,0,1.0)
+		desired_distance = np.clip(req.distance.data,0,1.5)
 
 		self.set_heading_angle(desired_angle)
 
