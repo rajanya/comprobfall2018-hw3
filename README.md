@@ -24,7 +24,7 @@ $ roscore &
 $ rosparam set scan_noise <std.deviation of scan noise>
 $ rosparam set angular_noise <std.deviation of angular noise>
 $ rosparam set linear_noise <std.deviation of linear noise>
-$ ROBOT_INITIAL_POSE="-x <x of start position> -y <y of start position>" 
+$ export ROBOT_INITIAL_POSE="-x <x of start position> -y <y of start position>" 
 $ roslaunch turtlebot_gazebo turtlebot_world.launch world_file:=<absolute path to world_x.world>
 ```
 If you are running the experiment corresponding to ```map_x.txt```, you must provide the absolute path to the world file ```world_x.world```. The world files are located in folder ```$HOME/catkin_ws/src/comprobfall2018-hw3/turtlebot_simulator/turtlebot_gazebo/worlds```.
@@ -43,6 +43,10 @@ If you are running the experiment corresponding to ```map_x.txt```, you must pro
 
 ```$ rosmsg show turtlebot_ctrl/TurtleBotScan```
 
+To see the messages getting published to the topic:
+
+```$ rostopic echo /turtlebot_scan```
+
 The message has one component: a float32 array called "ranges" of size 54. It contains range data within angle -30 degrees to +30 degrees.   
 
 
@@ -56,3 +60,6 @@ description defined by turtlebot_ctrl/TurtleBotControl.srv.
 
 The srv file is divided into two parts, separated by a − − −. The top part of
 the srv file is the request, while the bottom part of the srv file is the response.
+
+## Part B World:
+![alt text](https://github.com/rajanya/comprobfall2018-hw3/blob/master/screenshots/partB_world.png)
