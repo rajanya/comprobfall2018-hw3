@@ -12,6 +12,8 @@ class TurtlebotControlClient:
 		self.turtlebot_control_service = rospy.ServiceProxy("turtlebot_control",TurtleBotControl)
 
 	def run(self):
+		f_c = open("controls.txt", "w+")
+		f_r = open("trajectories.txt", "w+")
 		key = ""
 		while key != 's':
 			key = raw_input("WASD:")
@@ -41,8 +43,17 @@ class TurtlebotControlClient:
 				req.y = -1
 
 			print(req)
-			print(self.turtlebot_control_service(req,return_ground_truth))
-
+			f_c.write(str(req))
+			f_c.write("\n\n")
+			f_r.write(str(req))
+			f_r.write("\n")
+			output = self.turtlebot_control_service(req,return_ground_truth)
+			print(output)
+			f_r.write(str(output))
+			f_r.write("\n")
+			
+		f_c.close()
+		f_r.close()
 		rospy.spin()
 
 if __name__ == "__main__":
