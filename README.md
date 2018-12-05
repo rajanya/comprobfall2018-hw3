@@ -75,7 +75,7 @@ the srv file is the request, while the bottom part of the srv file is the respon
    
 4. A file called ```trajectories.txt``` will be generated in the current folder.
 
-5. Sample trajectories are provided in https://github.com/rajanya/comprobfall2018-hw3/tree/master/turtlebot_maps/trajectories, where trajectories_x.txt corresponds to map_x.txt for x = 1,2,3,4,5,6,7.
+5. Sample trajectories are provided in https://github.com/rajanya/comprobfall2018-hw3/tree/master/turtlebot_maps/trajectories, where trajectories_x.txt corresponds to map_x.txt for x = 1,2,3,4,5,6,7. Here, ```scan_noise, rotation_noise, translation_noise``` are set to 0.0
 
 ## Part B World:
 ![alt text](https://github.com/rajanya/comprobfall2018-hw3/blob/master/screenshots/partB_world.png)
