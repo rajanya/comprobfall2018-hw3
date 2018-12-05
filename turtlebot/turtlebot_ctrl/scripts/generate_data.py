@@ -15,14 +15,14 @@ class TurtlebotControlClient:
 		f_r = open("trajectories.txt", "w+")
 		key = ""
 		heading = Float32()
-                heading.data = 0.0
-                distance = Float32()
+		heading.data = 0.0
+		distance = Float32()
+		return_ground_truth = Bool()
+		return_ground_truth.data = True
 
 		while key != 's':
 			key = raw_input("PRESS CONTROL KEYS:\n(The rotation keys rotate the turtlebot with respect to x-axis)\nl : +45 degree\na : -45 degree\nt : +90 degree\nv : -90 degree\nj : 0 degree\nf : -180 degree\nh : +135 degree\ng: -135 degree\n\nd : to move 1 cm\nm : to move sqrt(2) cm (diagonally)\n\ns : to stop\n")
 			distance.data = 0.0
-			return_ground_truth = Bool()
-			return_ground_truth.data = True
 
 			if key == 'l':
 				heading.data = np.pi/4
