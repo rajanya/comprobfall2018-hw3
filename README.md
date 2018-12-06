@@ -71,9 +71,9 @@ the srv file is the request, while the bottom part of the srv file is the respon
    $ rosrun turtlebot_ctrl generate_data.py
 ```
 
-3. Follow the instructions on the terminal to rotate/displace the turtlebot.
+3. Follow the instructions on the terminal to rotate/displace the turtlebot. ( Notice that when you press any rotation key, the turtlebot doesn't translate but rotates in its current position, and so this might not be visible. )
    
-4. A file called ```trajectories.txt``` will be generated in the current folder.
+4. In the end when you press the key 's', a file called ```trajectories.txt``` will be generated in the current folder. 
 
 5. Sample trajectories are provided in https://github.com/rajanya/comprobfall2018-hw3/tree/master/turtlebot_maps/trajectories, where trajectories_x.txt corresponds to map_x.txt for x = 1,2,3,4,5,6,7. Here, ```scan_noise, rotation_noise, translation_noise``` are set to 0.0
 
